@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="router.tairan.com.trrouter.DefautSchemeTestActivity">
+    <TextView
+        android:text="当前Activity声明的RouterUri里面没有包含scheme，RouterManager在匹配的时候会自动添加上router://进行匹配\n\n当router.to(uri)的uri参数里面没有scheme时，也会添加上默认的scheme；\n\n默认的scheme在RouterConfig初始化时配置"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</android.support.constraint.ConstraintLayout>

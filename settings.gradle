@@ -1,0 +1,2 @@
+include  ':router',  ':router.compile', ':router.annotation', ':app', ':childmodule'
+

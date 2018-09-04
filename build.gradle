@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+
+    repositories {
+//        jcenter()
+//        google()
+
+        //中国开发者可使用下面两个阿里云的代理仓库
+        maven {
+            name 'jcenter'//可省略
+            url "https://maven.aliyun.com/repository/jcenter"//阿里云仓库镜像地址
+        }
+        maven {
+            name 'google'//可省略
+            url "https://maven.aliyun.com/repository/google"//阿里云仓库镜像地址
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.novoda:bintray-release:0.8.1'
+    }
+}
+
+allprojects {
+    repositories {
+//        jcenter()
+//        google()
+        //中国开发者可使用下面两个阿里云的代理仓库
+        maven {
+            name 'jcenter'//可省略
+            url "https://maven.aliyun.com/repository/jcenter"//阿里云仓库镜像地址
+        }
+        maven {
+            name 'google'//可省略
+            url "https://maven.aliyun.com/repository/google"//阿里云仓库镜像地址
+        }
+    }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+    delete rootProject.file('.idea')
+}
+
+
+ext {
+    versionName = '1.0.0-test-1'
+    groupId = 'com.trc.android'
+}

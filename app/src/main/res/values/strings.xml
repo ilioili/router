@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TrRouter</string>
+    <string name="to_router_hello">测试to(\"router://hello\")</string>
+    <string name="to_hello">测试to(\"hello\")</string>
+</resources>

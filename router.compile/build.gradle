@@ -1,0 +1,27 @@
+apply plugin: 'java-library'
+apply plugin: 'com.novoda.bintray-release'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.auto.service:auto-service:1.0-rc4'
+    implementation 'com.squareup:javapoet:1.9.0'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/java', '../router.annotation/src/main/java' // 指定源码目录
+        }
+    }
+}
+
+publish {
+    userOrg = 'trc'
+    groupId = 'com.trc.android'
+    artifactId = 'lib-router-porcessor'
+    publishVersion = '1.0.0'
+    desc = 'Oh hi, this is a nice description for a project, right?'
+    website = 'https://github.com/ilioili/router.git'
+}
