@@ -42,7 +42,7 @@ publish {
     userOrg = 'trc'
     groupId = 'com.trc.android'
     artifactId = 'lib-router'
-    publishVersion = '1.0.0'
+    publishVersion = rootProject.ext.versionName
     desc = 'Oh hi, this is a nice description for a project, right?'
     website = 'https://github.com/ilioili/router.git'
 }

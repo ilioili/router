@@ -7,15 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import com.trc.android.router.util.LifeCircleCallback;
-import com.trc.android.router.util.LifeCircleUtil;
 import com.trc.android.router.Router;
 import com.trc.android.router.annotation.interceptor.RouterInterceptor;
 import com.trc.android.router.annotation.uri.RouterUri;
 
 import router.tairan.com.trrouter.interceptor.LoginInterceptor;
 import router.tairan.com.trrouter.interceptor.RealNameOauthInterceptor;
+import router.tairan.com.trrouter.util.LifeCircleCallback;
+import router.tairan.com.trrouter.util.LifeCircleUtil;
 
 @RouterUri(Pages.REAL_NAME_OAUTH)
 @RouterInterceptor(LoginInterceptor.class)

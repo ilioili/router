@@ -1,7 +1,5 @@
 package com.trc.android.router;
 
-import com.trc.android.router.UriUtil;
-
 import org.junit.Test;
 
 public class UriUtilTest {
@@ -21,6 +19,8 @@ public class UriUtilTest {
         assert UriUtil.getParam("http://www.baidu.com?key=name&fuck#kkk", "fuck").equals("");
         assert UriUtil.getParam("http://www.baidu.com?key=name&fuck=#kkk", "fuck").equals("");
         assert UriUtil.getParam("http://www.baidu.com#fragment?key=name&fuck=122", "fuck").equals("122");
+        assert UriUtil.getParam("abc?key=name&fuck=122", "fuck").equals("122");
+        assert UriUtil.getParam("tel:111?key=name&fuck=122", "fuck").equals("122");
     }
 
     @Test

@@ -9,6 +9,9 @@ import android.widget.LinearLayout;
 import com.trc.android.router.Router;
 import com.trc.android.router.annotation.uri.RouterUri;
 
+import java.net.URLEncoder;
+import java.util.Map;
+
 @RouterUri("tlkj://main")
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickToUserProfile(View view) {
         Router.from(this).to(Pages.USER_PROFILE);
+        Router.from(this)
+                .setParam("title", URLEncoder.encode("分享有礼"))
+                .setParam("link", URLEncoder.encode("http://www.baidu.com"));
+        Router.Callback callback = new Router.Callback() {
+            @Override
+            public void onResult(boolean succeed, Map map) {
+
+            }
+        };
+
     }
 
 

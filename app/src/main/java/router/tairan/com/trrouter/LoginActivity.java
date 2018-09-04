@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.trc.android.router.util.LifeCircleCallback;
-import com.trc.android.router.util.LifeCircleUtil;
 import com.trc.android.router.Router;
 import com.trc.android.router.annotation.uri.RouterUri;
 
 import router.tairan.com.trrouter.interceptor.LoginInterceptor;
+import router.tairan.com.trrouter.util.LifeCircleCallback;
+import router.tairan.com.trrouter.util.LifeCircleUtil;
 
 @RouterUri(Pages.LOGIN)
 public class LoginActivity extends AppCompatActivity {

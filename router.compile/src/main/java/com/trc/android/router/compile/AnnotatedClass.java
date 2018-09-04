@@ -32,7 +32,7 @@ class AnnotatedClass {
         for (String t : typeElementList) {
             if (isFirst) isFirst = false;
             else classInitCodeBlock.append(',').append('\n');
-            classInitCodeBlock.append(t).append(".class");
+            classInitCodeBlock.append("  ").append(t).append(".class");
         }
         classInitCodeBlock.append('}');
         FieldSpec.Builder classesField = FieldSpec.builder(Class[].class, "CLASSES")
@@ -42,6 +42,7 @@ class AnnotatedClass {
         //generaClass
         TypeSpec injectClass = TypeSpec.classBuilder("AddressList")
                 .addModifiers(Modifier.PUBLIC)
+                .addJavadoc("Automatically generated file. DO NOT MODIFY\n")
                 .addMethod(getAnnotatedClasses.build())
                 .addField(classesField.build())
                 .build();

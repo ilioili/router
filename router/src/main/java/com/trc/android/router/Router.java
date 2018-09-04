@@ -6,7 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.SimpleArrayMap;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +18,7 @@ import java.util.Map;
 public class Router {
 
     private static final String METHOD_TRANSFORM_OBJECT = "transformObject";
+    public static final String UTF_8 = "UTF-8";
     private boolean isUriSet;
     private Context context;
     private List<Class<? extends Interceptor>> interceptorClassList;
@@ -96,11 +100,16 @@ public class Router {
             } else if (urlBuilder.length() > 0) {
                 char lastChar = urlBuilder.charAt(urlBuilder.length() - 1);
                 if (lastChar != '?' && lastChar != '&') {
-                    boolean containsSchemeMark = urlBuilder.indexOf(":") > 0;//类似http://、file://开头或tel:133等，包含scheme标志，任务已经setUrl了
-                    urlBuilder.append(containsSchemeMark ? '?' : '&');
+                    urlBuilder.append(isUriSet ? '?' : '&');
                 }
             }
-            urlBuilder.append(key).append('=').append(value);
+            String encodeValue = String.valueOf(value);
+            try {
+                encodeValue = URLEncoder.encode(encodeValue, UTF_8);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            urlBuilder.append(key).append('=').append(encodeValue);
             return this;
         }
     }
@@ -109,7 +118,13 @@ public class Router {
      * 拼接在URI中的参数
      */
     public String getParam(String key) {
-        return UriUtil.getParam(toUriStr(), key);
+        String param = UriUtil.getParam(toUriStr(), key);
+        try {
+            if (null != param) param = URLDecoder.decode(param, UTF_8);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return param;
     }
 
     /**
@@ -148,6 +163,7 @@ public class Router {
         if (urlBuilder.length() == 0) {
             urlBuilder.append(uri);
         } else {
+            //之前设置了参数，考虑插入的时候是否需要拼接&或者？
             char lastChar = uri.charAt(uri.length() - 1);
             if (lastChar != '?') {
                 if (uri.indexOf('?') > 0) {

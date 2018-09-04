@@ -114,15 +114,9 @@ public class RouterManager {
                     }
                 }
             }
-        } catch (
-                ActivityNotFoundException e)
-
-        {
+        } catch (ActivityNotFoundException e) {
             e.printStackTrace();
-        } catch (
-                Exception e)
-
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -130,7 +124,7 @@ public class RouterManager {
 
     private static void handleByInterceptor(Class<? extends Interceptor> interceptorClass, Router router, final Class<?> targetClass, final Iterator<Class<? extends Interceptor>> iterator) {
         try {
-            interceptorClass.newInstance().handle(router, router1 -> resolveByInterceptor(targetClass, router1, iterator));
+            interceptorClass.newInstance().handle(router, routerAfterIntercepting -> resolveByInterceptor(targetClass, routerAfterIntercepting, iterator));
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

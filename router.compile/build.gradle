@@ -20,8 +20,8 @@ sourceSets {
 publish {
     userOrg = 'trc'
     groupId = 'com.trc.android'
-    artifactId = 'lib-router-porcessor'
-    publishVersion = '1.0.0'
-    desc = 'Oh hi, this is a nice description for a project, right?'
+    artifactId = 'lib-router-processor'
+    publishVersion = rootProject.ext.versionName
+    desc = 'Oh hi, this is a open source project for Android router from www.trc.com?'
     website = 'https://github.com/ilioili/router.git'
 }
